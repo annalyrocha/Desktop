@@ -1,0 +1,40 @@
+class Greeter {
+    private String name;
+
+    public Greeter(String name) {
+        this.name = name;
+    }
+
+    public String sayHello() {
+        return "Hello, " + name + "!";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        int x = 0;
+
+        try {
+            Greeter g1 = new Greeter("Alice");
+            Greeter g2 = new Greeter("Alice");
+
+            if (!g1.sayHello().equals(g2.sayHello())) {
+                g2 = null;
+            }
+
+            x = 1;
+            System.out.println(g2.sayHello());
+            x = 2;
+
+        } catch (NullPointerException ex) {
+            x = 10;
+        } catch (RuntimeException ex) {
+            x = 4;
+        } finally {
+            x++;
+        }
+
+        System.out.println("Final value of x: " + x);
+    }
+}
+
